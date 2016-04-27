@@ -151,6 +151,13 @@
             </div>
         </ons-tab>
 
+        <ons-tab page="form.html">
+            <div class="tab">
+                <ons-icon icon="ion-edit" class="tab-icon"></ons-icon>
+                <div class="tab-label">Form</div>
+            </div>
+        </ons-tab>
+
         <ons-tab page="home.html">
             <div class="tab">
                 <ons-icon icon="ion-star" class="tab-icon"></ons-icon>
@@ -182,7 +189,7 @@
                     <p id="statusWifi"></p>
                     <p id="deviceProperties" style="font-size:75%; color:#a3a3a3;"></p>
                     <p ons-if-platform="android">Yay, you are using Android.</p>
-                    <p ons-if-platform="iOS">Boo, you are using iOS.</p> 
+                    <p ons-if-platform="iOS">Boo, you are using iOS.</p>
                 </ons-col>
             </ons-row>
 
@@ -216,6 +223,19 @@
             </ons-list>
 
         </ons-page>
+    </ons-template>
+
+    <ons-template id="form.html">
+        <ons-navigator>
+            <ons-page>
+                <ons-toolbar>
+                    <div class="center">Form</div>
+                </ons-toolbar>
+
+
+
+            </ons-page>
+        </ons-navigator>
     </ons-template>
 
     <ons-template id="home.html">

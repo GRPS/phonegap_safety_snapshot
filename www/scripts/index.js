@@ -32,7 +32,7 @@
 
     var isConnected = false;
     function checkConnection() {
-        alert("Checking connection");
+
         var networkState = navigator.network.connection.type;
         if (networkState == Connection.NONE) {isConnected = false;} else {isConnected = true;}
 
