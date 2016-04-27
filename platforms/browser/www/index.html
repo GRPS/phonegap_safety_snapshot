@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!-- CSP support mode (required for Windows Universal apps): https://docs.angularjs.org/api/ng/directive/ngCsp -->
+<html lang="en" ng-app="app" ng-csp>
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- JS dependencies (order matters!) -->
+    <script src="scripts/platformOverrides.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/onsen/js/onsenui.js"></script>
+
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css" />
+
+    <!-- CSP support mode (required for Windows Universal apps) -->
+    <link rel="stylesheet" href="lib/angular/angular-csp.css" />
+
+
+    <!-- --------------- App init --------------- -->
+
+    <title>Onsen UI Tab Bar</title>
+
+    <script>
+        angular.module('app', ['onsen']);
+
+        angular.module('app').controller('AppController', function ($scope) {
+            $scope.doSomething = function () {
+                ons.notification.alert({ message: 'tapped' });
+            };
+        });
+    </script>
+
+    <style>
+        .tab {
+            line-height: 1;
+        }
+
+        .tab-icon {
+            font-size: 24px;
+            padding: 0;
+            margin: 0;
+            vertical-align: top;
+            line-height: 28px;
+        }
+
+        .tab-label {
+            line-height: 11px;
+            vertical-align: top;
+            font-size: 11px;
+        }
+
+        .profile-wrapper {
+            padding: 16px 10px 0 10px;
+        }
+
+        .profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            -webkit-border-radius: 100%;
+            background-color: #ccc;
+        }
+
+        .profile-name {
+            font-size: 18px;
+            padding: 4px 0 2px 0;
+        }
+
+        .profile-email {
+            font-size: 15px;
+            opacity: 0.4;
+        }
+
+        .switch--list-item {
+            margin-right: 0px;
+        }
+
+        .settings-header {
+            font-weight: 500;
+            font-size: 14px;
+            opacity: 0.4;
+            padding: 10px 0 0px 10px;
+            margin-bottom: -4px;
+        }
+
+        .settings-list {
+            margin-top: 10px;
+        }
+
+        .item {
+            padding: 10px;
+            line-height: 1;
+        }
+
+        .item-thum {
+            background-color: #ccc;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            -webkit-border-radius: 100%;
+        }
+
+        .item-title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .item-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.3;
+            margin: 4px 0 0 0;
+            padding: 0 30px 0 0;
+        }
+
+        .item-label {
+            font-size: 12px;
+            color: #999;
+            float: right;
+        }
+        .styled-select select {
+            background: transparent;
+            width: 268px;
+            padding: 5px;
+            font-size: 16px;
+            line-height: 1;
+            border: 0;
+            border-radius: 0;
+            height: 34px;
+            -webkit-appearance: none;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="AppController">
+    <!-- Cordova reference -->
+    <script src="cordova.js"></script>
+    <script src="scripts/index.js"></script>
+    <!-- -->
+
+    <ons-tabbar>
+
+        <ons-tab active="true" page="welcome.html">
+            <div class="tab">
+                <ons-icon icon="ion-home" class="tab-icon"></ons-icon>
+                <div class="tab-label">Welcome</div>
+            </div>
+        </ons-tab>
+
+        <ons-tab page="home.html">
+            <div class="tab">
+                <ons-icon icon="ion-star" class="tab-icon"></ons-icon>
+                <div class="tab-label">List</div>
+            </div>
+        </ons-tab>
+
+        <ons-tab page="settings.html">
+            <div class="tab">
+                <ons-icon icon="ion-gear-a" class="tab-icon"></ons-icon>
+                <div class="tab-label">Settings</div>
+            </div>
+        </ons-tab>
+
+    </ons-tabbar>
+
+    <ons-template id="welcome.html">
+        <ons-page>
+
+            <h1 style="text-align:center;">PJ Dick</h1>
+            <h3 style="text-align:center;">Safety Snapshot</h3>
+
+            <ons-row class="profile-wrapper">
+                <ons-col>
+                    <div style="text-align:center;">
+                        <img src="logo.gif" alt="Logo" />
+                    </div>
+                    <p>This is dummy text to welcome you to our app!</p>
+                    <p id="statusWifi"></p>
+                    <p id="deviceProperties" style="font-size:75%; color:#a3a3a3;"></p>
+                    <p ons-if-platform="android">Yay, you are using Android.</p>
+                    <p ons-if-platform="iOS">Boo, you are using iOS.</p> 
+                </ons-col>
+            </ons-row>
+
+            <ons-list-header>Job Names</ons-list-header>
+
+            <ons-list modifier="inset" class="settings-list">
+                <ons-list-item modifier="chevron" class="styled-select">
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4 Dummy text for a big entry to see what it looks like.</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                    </select>
+                </ons-list-item>
+            </ons-list>
+
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="home.html">
+        <ons-navigator>
+            <ons-page>
+                <ons-toolbar>
+                    <div class="left"><ons-toolbar-button ng-click="doSomething()"><ons-icon icon="ion-compose"></ons-icon></ons-toolbar-button></div>
+                    <div class="center">Home</div>
+                    <div class="right"></div>
+                </ons-toolbar>
+
+                <ons-list style="margin: -1px 0">
+                    <ons-list-item modifier="chevron" class="item" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" ng-click="doSomething()">
+                        <ons-row>
+                            <ons-col width="60px">
+                                <div class="item-thum"></div>
+                            </ons-col>
+                            <ons-col>
+                                <header>
+                                    <span class="item-title">Rorem Ipsum</span>
+                                    <span class="item-label">5h</span>
+                                </header>
+                                <p class="item-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </ons-col>
+                        </ons-row>
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-navigator>
+    </ons-template>
+
+    <ons-template id="settings.html">
+        <ons-navigator title="Navigator" var="myNavigator">
+            <ons-page>
+                <ons-toolbar>
+                    <div class="center">Settings</div>
+                </ons-toolbar>
+
+                <div class="settings-header">Select Data</div>
+
+                <ons-list modifier="inset" class="settings-list">
+                    <ons-list-item modifier="chevron" onclick="myNavigator.pushPage('settings1.html', { animation : 'slide' } )">
+                        Foreman / Subcontractor
+                    </ons-list-item>
+
+                    <ons-list-item modifier="chevron" onclick="myNavigator.pushPage('settings2.html', { animation : 'slide' } )">
+                        Foreman
+                    </ons-list-item>
+                </ons-list>
+
+            </ons-page>
+        </ons-navigator>
+    </ons-template>
+
+    <ons-template id="settings1.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left" style="line-height: 44px">
+            <ons-back-button>Back</ons-back-button>
+          </div>
+          <div class="center">Settings 1</div>
+          <div class="right" style="line-height: 44px">
+            Right
+          </div>
+        </ons-toolbar>
+
+        <div style="text-align: center">
+          <br />
+          <ons-button modifier="light" onclick="myNavigator.popPage()">
+            Pop Page
+          </ons-button>
+        </div>
+      </ons-page>
+    </ons-template>
+
+    <ons-template id="settings2.html">
+      <ons-page>
+        <ons-toolbar>
+          <div class="left" style="line-height: 44px">
+            <ons-back-button>Back</ons-back-button>
+          </div>
+          <div class="center">Settings 2</div>
+          <div class="right" style="line-height: 44px">
+            Right
+          </div>
+        </ons-toolbar>
+
+        <ons-scroller>
+      <ons-list>
+        <ons-list-header>Numbers</ons-list-header>
+        <ons-list-item>One</ons-list-item>
+        <ons-list-item>Two</ons-list-item>
+        <ons-list-item>Three</ons-list-item>
+        <ons-list-item>Four</ons-list-item>
+        <ons-list-item>Five</ons-list-item>
+        <ons-list-item>Six</ons-list-item>
+        <ons-list-item>One</ons-list-item>
+        <ons-list-item>Two</ons-list-item>
+        <ons-list-item>Three</ons-list-item>
+        <ons-list-item>Four</ons-list-item>
+        <ons-list-item>Five</ons-list-item>
+        <ons-list-item>Six</ons-list-item>
+        <ons-list-item>One</ons-list-item>
+        <ons-list-item>Two</ons-list-item>
+        <ons-list-item>Three</ons-list-item>
+        <ons-list-item>Four</ons-list-item>
+        <ons-list-item>Five</ons-list-item>
+        <ons-list-item>Six</ons-list-item>
+        <ons-list-item>One</ons-list-item>
+        <ons-list-item>Two</ons-list-item>
+        <ons-list-item>Three</ons-list-item>
+        <ons-list-item>Four</ons-list-item>
+        <ons-list-item>Five</ons-list-item>
+        <ons-list-item>Six</ons-list-item>
+
+      </ons-list>
+    </ons-scroller>
+
+      </ons-page>
+    </ons-template>
+
+</body>
+</html>
